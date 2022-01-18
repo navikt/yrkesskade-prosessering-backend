@@ -4,13 +4,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.nav.familie</groupId>
-    <artifactId>familie-prosessering</artifactId>
+    <groupId>no.nav.yrkesskade</groupId>
+    <artifactId>yrkesskade-prosessering</artifactId>
 
     <name>Prosessering - Root</name>
     <version>${revision}${sha1}${changelist}</version>
     <packaging>pom</packaging>
-    <url>https://github.com/navikt/familie-prosessering-backend</url>
+    <url>https://github.com/navikt/yrkesskade-prosessering-backend</url>
 
     <properties>
         <revision>1.0</revision>
@@ -250,7 +250,7 @@
         <repository>
             <id>github</id>
             <name>GitHub navikt Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/navikt/familie-prosessering-backend</url>
+            <url>https://maven.pkg.github.com/navikt/yrkesskade-prosessering-backend</url>
         </repository>
     </distributionManagement>
 

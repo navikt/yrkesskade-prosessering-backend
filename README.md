@@ -1,6 +1,6 @@
-# Familie-prosessering
+# Yrkesskade-prosessering-backend
 
-Prosesseringsmotor for familieområdet.
+Prosesseringsmotor for yrkesskadeområdet.
 
 ## Generellt
 * Oppdater status i task-tabellen til lengde 20: `ALTER TABLE task ALTER COLUMN status VARCHAR(20)  DEFAULT 'UBEHANDLET'::CHARACTER VARYING NOT NULL;`
@@ -23,4 +23,4 @@ class DatabaseConfiguration : AbstractJdbcConfiguration() {
 ## JPA
 
 
-![](https://github.com/navikt/familie-prosessering-backend/workflows/Build-Deploy/badge.svg)
+![](https://github.com/navikt/yrkesskade-prosessering-backend/workflows/Build-Deploy/badge.svg)

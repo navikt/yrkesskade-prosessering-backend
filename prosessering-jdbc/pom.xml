@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>familie-prosessering</artifactId>
-        <groupId>no.nav.familie</groupId>
+        <artifactId>yrkesskade-prosessering</artifactId>
+        <groupId>no.nav.yrkesskade</groupId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>no.nav.familie</groupId>
+            <groupId>no.nav.yrkesskade</groupId>
             <artifactId>prosessering-core</artifactId>
             <version>${project.version}</version>
         </dependency>
