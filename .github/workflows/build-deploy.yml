@@ -1,7 +1,8 @@
 name: Build-Deploy
-on: push
-#    branches-ignore:
-#      - master
+on:
+  push:
+    branches:
+      - master
   pull_request:
     types: [closed]
 
