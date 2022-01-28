@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api")
-@ProtectedWithClaims(issuer = "azuread")
+@ProtectedWithClaims(issuer = "aad")
 class TaskController(private val restTaskService: RestTaskService, private val oidcUtil: OIDCUtil) {
 
     fun hentBrukernavn(): String {
