@@ -21,7 +21,7 @@ class TaskController(private val restTaskService: RestTaskService, private val o
 
     fun hentBrukernavn(): String {
 //        return oidcUtil.getClaim("preferred_username")
-        return "MVP"
+        return ""
     }
 
     @GetMapping(path = ["/v2/task", "task/v2"])
