@@ -1,7 +1,5 @@
 package no.nav.yrkesskade.prosessering.rest
 
-import io.mockk.every
-import io.mockk.mockk
 import no.nav.yrkesskade.prosessering.TestAppConfig
 import no.nav.yrkesskade.prosessering.domene.Status
 import no.nav.yrkesskade.prosessering.domene.Task
@@ -40,8 +38,8 @@ internal class TaskControllerIntegrasjonTest {
 
     @BeforeEach
     fun setup() {
-        taskController = TaskController(restTaskService, mockk())
-        every { taskController.hentBrukernavn() } returns ""
+        taskController = TaskController(restTaskService)
+        //        every { taskController.hentBrukernavn() } returns "" ""
 
     }
 
