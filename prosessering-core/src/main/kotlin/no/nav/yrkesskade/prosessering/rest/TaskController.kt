@@ -1,6 +1,7 @@
 package no.nav.yrkesskade.prosessering.rest
 
 import no.nav.familie.kontrakter.felles.Ressurs
+import no.nav.familie.sikkerhet.OIDCUtil
 import no.nav.security.token.support.core.api.Unprotected
 import no.nav.yrkesskade.prosessering.domene.Status
 import org.springframework.http.ResponseEntity
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api")
 @Unprotected
-class TaskController(private val restTaskService: RestTaskService) {
+class TaskController(private val restTaskService: RestTaskService, private val oidcUtil: OIDCUtil) {
 
     fun hentBrukernavn(): String {
 //        return oidcUtil.getClaim("preferred_username")

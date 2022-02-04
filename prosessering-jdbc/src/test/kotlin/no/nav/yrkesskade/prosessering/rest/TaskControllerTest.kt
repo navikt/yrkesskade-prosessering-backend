@@ -20,8 +20,8 @@ internal class TaskControllerTest {
     @BeforeEach
     fun setup() {
         restTaskService = RestTaskService(taskService)
-        taskController = TaskController(restTaskService)
-//      every { taskController.hentBrukernavn() } returns "" ""
+        taskController = TaskController(restTaskService, mockk())
+        every { taskController.hentBrukernavn() } returns ""
 
     }
 
