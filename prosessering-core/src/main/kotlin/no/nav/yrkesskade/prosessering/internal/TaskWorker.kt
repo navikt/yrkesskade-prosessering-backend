@@ -106,7 +106,7 @@ class TaskWorker(private val taskService: TaskService,
         if (task.status == Status.FEILET || task.status == Status.MANUELL_OPPFØLGING) {
             finnFeilteller(task.type).increment()
             log.error("Task ${task.id} av type ${task.type} har feilet/satt til manuell oppfølgning. " +
-                      "Sjekk familie-prosessering for detaljer")
+                      "Sjekk yrkesskade-prosessering for detaljer")
         }
         task = task.medTriggerTid(task.triggerTid.plusSeconds(finnTriggerTidVedFeil(task.type)))
         taskService.save(task)
