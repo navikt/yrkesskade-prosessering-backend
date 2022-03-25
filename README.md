@@ -24,3 +24,16 @@ class DatabaseConfiguration : AbstractJdbcConfiguration() {
 
 
 ![](https://github.com/navikt/yrkesskade-prosessering-backend/workflows/Build-Deploy/badge.svg)
+
+# Henvendelser
+
+Enten:
+Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
+
+Eller:
+Spørsmål knyttet til koden eller prosjektet kan stilles til yrkesskade@nav.no
+
+## For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #team-yrkesskade.
+
