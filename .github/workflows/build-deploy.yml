@@ -21,8 +21,8 @@ jobs:
 
       - name: Resolve/Update Dependencies
         env:
-          GITHUB_USERNAME: x-access-token
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.READER_TOKEN }}
         run: mvn --settings .m2/maven-settings.xml package dependency:resolve-plugins dependency:go-offline
 
       - name: Cache Maven dependencies
@@ -36,8 +36,8 @@ jobs:
 
       - name: Build (and run tests)
         env:
-          GITHUB_USERNAME: x-access-token
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.READER_TOKEN }}
         if: steps.cache.outputs.cache-hit != 'true'
         run: mvn --settings .m2/maven-settings.xml clean install
 
@@ -48,8 +48,8 @@ jobs:
 
       - name: Setting version
         env:
-          GITHUB_USERNAME: x-access-token
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #        if: github.base_ref == 'master'
         run: |
           export GIT_COMMIT_HASH=$(git log -n 1 --pretty=format:'%h')
@@ -62,6 +62,6 @@ jobs:
       - name: Deploy to Github Package
 #        if: github.base_ref == 'master'
         env:
-          GITHUB_USERNAME: x-access-token
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --settings .m2/maven-settings.xml source:jar-no-fork deploy -DskipTests=true -Dmaven.wagon.http.pool=false
