@@ -8,15 +8,13 @@ import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 
 @Entity
 @Table(name = "TASK_LOGG")
 data class TaskLogg(
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_logg_seq")
-        @SequenceGenerator(name = "task_logg_seq")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         override val id: Long = 0L,
 
         override val endretAv: String = BRUKERNAVN_NÅR_SIKKERHETSKONTEKST_IKKE_FINNES,

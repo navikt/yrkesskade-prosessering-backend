@@ -4,6 +4,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;CASE_INSENSITIVE_IDENTIFIERS=TRUE;MODE=POSTGRESQL
+    driver-class-name: org.h2.Driver
     hikari:
       maximum-pool-size: 2
       connection-test-query: "select 1"
@@ -19,7 +23,7 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
   flyway:
-    enabled: false
+    enabled: true
 
 server:
   servlet:

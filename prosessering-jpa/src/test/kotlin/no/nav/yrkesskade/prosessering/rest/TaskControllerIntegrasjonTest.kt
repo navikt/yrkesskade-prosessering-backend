@@ -46,9 +46,9 @@ internal class TaskControllerIntegrasjonTest {
 
     @Test
     fun `skal bare rekjøre tasker status FEILET`() {
-        var ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}", status = Status.UBEHANDLET)
-        var taskSomSkalRekjøres = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
-        var avvikshåndtert = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.AVVIKSHÅNDTERT)
+        var ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}")
+        var taskSomSkalRekjøres = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
+        var avvikshåndtert = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.AVVIKSHÅNDTERT)
         ubehandletTask = repository.save(ubehandletTask)
         taskSomSkalRekjøres = repository.save(taskSomSkalRekjøres)
         avvikshåndtert = repository.save(avvikshåndtert)

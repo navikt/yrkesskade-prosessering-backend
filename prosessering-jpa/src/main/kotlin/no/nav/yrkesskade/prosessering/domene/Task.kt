@@ -3,6 +3,7 @@ package no.nav.yrkesskade.prosessering.domene
 import no.nav.familie.log.IdUtils
 import no.nav.familie.log.mdc.MDCConstants
 import no.nav.yrkesskade.prosessering.TaskFeil
+import no.nav.yrkesskade.prosessering.util.stringToMd5Hex
 import org.slf4j.MDC
 import java.io.IOException
 import java.time.LocalDateTime
@@ -18,7 +19,6 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.OneToMany
-import javax.persistence.SequenceGenerator
 import javax.persistence.Table
 import javax.persistence.Version
 
@@ -26,10 +26,10 @@ import javax.persistence.Version
 @Table(name = "TASK")
 data class Task(
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_seq")
-        @SequenceGenerator(name = "task_seq")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         override val id: Long = 0L,
         override val payload: String,
+        override val payloadHash: String,
         @Enumerated(EnumType.STRING)
         override val status: Status = Status.UBEHANDLET,
         @Enumerated(EnumType.STRING)
@@ -57,6 +57,7 @@ data class Task(
     constructor (type: String, payload: String, properties: Properties = Properties()) :
             this(type = type,
                  payload = payload,
+                 payloadHash = stringToMd5Hex(payload),
                  metadata = properties.apply {
                      this[MDCConstants.MDC_CALL_ID] =
                              MDC.get(MDCConstants.MDC_CALL_ID)
