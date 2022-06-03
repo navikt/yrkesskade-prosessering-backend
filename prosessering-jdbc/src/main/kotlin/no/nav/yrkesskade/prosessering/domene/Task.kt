@@ -3,6 +3,7 @@ package no.nav.yrkesskade.prosessering.domene
 import no.nav.familie.log.IdUtils
 import no.nav.familie.log.mdc.MDCConstants
 import no.nav.yrkesskade.prosessering.TaskFeil
+import no.nav.yrkesskade.prosessering.util.stringToMd5Hex
 import org.slf4j.MDC
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Transient
@@ -19,6 +20,7 @@ data class Task(
         @Id
         override val id: Long = 0L,
         override val payload: String,
+        override val payloadHash: String,
         override val status: Status = Status.UBEHANDLET,
         override val avvikstype: Avvikstype? = null,
         override val opprettetTid: LocalDateTime = LocalDateTime.now(),
@@ -44,6 +46,7 @@ data class Task(
     constructor (type: String, payload: String, properties: Properties = Properties()) :
             this(type = type,
                  payload = payload,
+                 payloadHash = stringToMd5Hex(payload),
                  metadataWrapper = PropertiesWrapper(properties.apply {
                      this[MDCConstants.MDC_CALL_ID] =
                              MDC.get(MDCConstants.MDC_CALL_ID)

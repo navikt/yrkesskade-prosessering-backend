@@ -1,0 +1,1 @@
+ALTER TABLE task ADD COLUMN payload_hash VARCHAR NOT NULL;

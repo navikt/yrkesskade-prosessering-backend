@@ -42,9 +42,9 @@ class TaskRepositoryTest {
         val preCountFeilet = preCount.count { it.status == Status.FEILET }
         val preCountUbehandlet = preCount.count { it.status == Status.UBEHANDLET }
 
-        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}", status = Status.FEILET)
-        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
-        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.UBEHANDLET)
+        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}").copy(status = Status.FEILET)
+        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
+        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.UBEHANDLET)
 
         repository.save(ubehandletTask)
         repository.save(feiletTask1)
@@ -58,9 +58,9 @@ class TaskRepositoryTest {
 
     @Test
     fun `finnTasksMedStatus - skal hente ut alle tasker gitt en status`() {
-        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}", status = Status.UBEHANDLET)
-        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
-        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
+        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}").copy(status = Status.UBEHANDLET)
+        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
+        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
 
         repository.save(ubehandletTask)
         repository.save(feiletTask1)
@@ -73,9 +73,9 @@ class TaskRepositoryTest {
 
     @Test
     fun `finnTasksMedStatus - skal hente ut max 1 task gitt en status`() {
-        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}", status = Status.UBEHANDLET)
-        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
-        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}", status = Status.FEILET)
+        val ubehandletTask = Task(type = TaskStep1.TASK_1, payload = "{'a'='b'}").copy(status = Status.UBEHANDLET)
+        val feiletTask1 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
+        val feiletTask2 = Task(type = TaskStep2.TASK_2, payload = "{'a'='1'}").copy(status = Status.FEILET)
 
         repository.save(ubehandletTask)
         repository.save(feiletTask1)
@@ -87,10 +87,10 @@ class TaskRepositoryTest {
     }
 
     @Test
-    fun `findByStatus - skall returnere tasks sortert etter opprettet_tid`() {
-        val task1 = Task(type = TaskStep1.TASK_1, payload = "1", opprettetTid = LocalDateTime.now())
-        val task2 = Task(type = TaskStep2.TASK_2, payload = "2", opprettetTid = LocalDateTime.now().minusDays(1))
-        val task3 = Task(type = TaskStep2.TASK_2, payload = "3", opprettetTid = LocalDateTime.now().plusDays(1))
+    fun `findByStatus - skal returnere tasks sortert etter opprettet_tid`() {
+        val task1 = Task(type = TaskStep1.TASK_1, payload = "1").copy(opprettetTid = LocalDateTime.now())
+        val task2 = Task(type = TaskStep2.TASK_2, payload = "2").copy(opprettetTid = LocalDateTime.now().minusDays(1))
+        val task3 = Task(type = TaskStep2.TASK_2, payload = "3").copy(opprettetTid = LocalDateTime.now().plusDays(1))
 
         repository.save(task1)
         repository.save(task2)
@@ -120,5 +120,4 @@ class TaskRepositoryTest {
         assertThat(catchThrowable { repository.save(task.copy(status = Status.KLAR_TIL_PLUKK)) })
                 .matches { isOptimisticLocking(it as Exception) }
     }
-
 }

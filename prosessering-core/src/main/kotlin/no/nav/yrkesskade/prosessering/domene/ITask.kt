@@ -12,6 +12,8 @@ abstract class ITask {
 
     abstract val payload: String
 
+    abstract val payloadHash: String
+
     abstract val status: Status
 
     abstract val avvikstype: Avvikstype?

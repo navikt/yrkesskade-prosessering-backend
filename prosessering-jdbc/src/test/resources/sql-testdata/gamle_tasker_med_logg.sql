@@ -1,11 +1,11 @@
-INSERT INTO task (id, payload, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
-VALUES (1000000, '1002352', 'FERDIG', '2019-10-24 10:38:13.819', 'hentJournalpostIdFraJoarkTask',
+INSERT INTO task (id, payload, payload_hash, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
+VALUES (1000000, '1002352', 'en fin hashverdi', 'FERDIG', '2019-10-24 10:38:13.819', 'hentJournalpostIdFraJoarkTask',
         'callId=CallId_1571906292358_2053169736', '2019-10-24 10:38:13.818236', null, 1);
-INSERT INTO task (id, payload, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
-VALUES (1000002, '1002351', 'KLAR_TIL_PLUKK', '2019-10-24 10:15:44.061', 'hentSaksnummerFraJoark',
+INSERT INTO task (id, payload, payload_hash, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
+VALUES (1000002, '1002351', 'en fin hashverdi', 'KLAR_TIL_PLUKK', '2019-10-24 10:15:44.061', 'hentSaksnummerFraJoark',
         'callId=CallId_1571904940794_1993984421', '2019-10-24 10:45:59.678770', null, 1);
-INSERT INTO task (id, payload, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
-VALUES (1000003, '1002351', 'FERDIG', '2019-10-24 10:15:42.453', 'hentJournalpostIdFraJoarkTask',
+INSERT INTO task (id, payload, payload_hash, status, opprettet_tid, type, metadata, trigger_tid, avvikstype, versjon)
+VALUES (1000003, '1002351', 'en fin hashverdi', 'FERDIG', '2019-10-24 10:15:42.453', 'hentJournalpostIdFraJoarkTask',
         'callId=CallId_1571904940794_1993984421', '2019-10-24 10:15:42.453038', null, 1);
 
 INSERT INTO task_logg (id, task_id, type, node, opprettet_tid, melding, endret_av)

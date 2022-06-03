@@ -1,6 +1,5 @@
 package no.nav.yrkesskade.prosessering.internal
 
-import com.ninjasquad.springmockk.SpykBean
 import no.nav.yrkesskade.prosessering.TestAppConfig
 import no.nav.yrkesskade.prosessering.domene.Status
 import no.nav.yrkesskade.prosessering.domene.Task
@@ -23,7 +22,7 @@ import org.springframework.test.context.transaction.TestTransaction
 @DataJdbcTest(excludeAutoConfiguration = [TestDatabaseAutoConfiguration::class])
 class TaskWorkerTest {
 
-    @SpykBean
+    @Autowired
     private lateinit var repository: TaskRepository
 
     @Autowired
